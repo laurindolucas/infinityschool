@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+</head>
+    <body>
+        <form action="/enviar" method="post">
+            <label for="name">Nome</label>
+            <input type="text" class="name" name="name">
+            <br>
+            <label for="email">Email</label>
+            <input type="email" name="email" class="email">
+            <br>
+            <label for="password">Senha</label>
+            <input type="password" name="password" class="password">
+            <br>
+            <label for="country">País</label>
+            <select name="country" class="country">
+                <option value="brasil">Brasil</option>
+                <option value="eua">Estados Unidos</option>
+                <option value="italia">Itália</option>
+            </select>
+            <br>
+            <label for="message">Mensagem</label>
+            <textarea name="message" class="message"></textarea>
+            <br>
+            <button type="submit">Enviar</button>
+            <button type="reset">Limpar</button>
+
+        </form>
+    </body>
+</html>
