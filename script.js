@@ -285,102 +285,138 @@
 // listarLivros();
 
 
-// const bancoDeDados = [
-//     {
-//         id: 1,
-//         produto: "notebook",
-//         preco: 3000.00,
-//         quantidade: 3,
-//         categoria: "eletronicos",
-//         data: "2025-05-02"
-//     },
-//     {
-//         id: 2,
-//         produto: "livro de programação",
-//         preco: 150.00,
-//         quantidade: 10,
-//         categoria: "livros",
-//         data: "2025-05-01"
-//     },
-//     {
-//         id: 3,
-//         produto: "cadeira gamer",
-//         preco: 800.00,
-//         quantidade: 2,
-//         categoria: "moveis",
-//         data: "2025-04-30"
-//     },
-//     {
-//         id: 4,
-//         produto: "camiseta tecnológica",
-//         preco: 500.00,
-//         quantidade: 5,
-//         categoria: "vestuario",
-//         data: "2025-05-02"
-//     },
-//     {
-//         id: 5,
-//         produto: "smartphone",
-//         preco: 2500.00,
-//         quantidade: 4,
-//         categoria: "eletronicos",
-//         data: "2025-05-01"
-//     },
-//     {
-//         id: 6,
-//         produto: "mesa de escritório",
-//         preco: 1200.00,
-//         quantidade: 1,
-//         categoria: "moveis",
-//         data: "2025-04-29"
-//     },
-//     {
-//         id: 7,
-//         produto: "mouse sem fio",
-//         preco: 200.00,
-//         quantidade: 8,
-//         categoria: "eletronicos",
-//         data: "2025-05-03"
-//     },
-//     {
-//         id: 8,
-//         produto: "tênis esportivo",
-//         preco: 350.00,
-//         quantidade: 6,
-//         categoria: "vestuario",
-//         data: "2025-05-01"
-//     },
-//     {
-//         id: 9,
-//         produto: "tablet",
-//         preco: 1800.00,
-//         quantidade: 3,
-//         categoria: "eletronicos",
-//         data: "2025-05-02"
-//     },
-//     {
-//         id: 10,
-//         produto: "mochila impermeável",
-//         preco: 250.00,
-//         quantidade: 7,
-//         categoria: "acessorios",
-//         data: "2025-04-28"
-//     }
-// ];
+const bancoDeDados = [
+    {
+        id: 1,
+        produto: "notebook",
+        preco: 3000.00,
+        quantidade: 3,
+        categoria: "eletronicos",
+        data: "2025-05-02"
+    },
+    {
+        id: 2,
+        produto: "livro de programação",
+        preco: 150.00,
+        quantidade: 10,
+        categoria: "livros",
+        data: "2025-05-01"
+    },
+    {
+        id: 3,
+        produto: "cadeira gamer",
+        preco: 800.00,
+        quantidade: 2,
+        categoria: "moveis",
+        data: "2025-04-30"
+    },
+    {
+        id: 4,
+        produto: "camiseta tecnológica",
+        preco: 500.00,
+        quantidade: 5,
+        categoria: "vestuario",
+        data: "2025-05-02"
+    },
+    {
+        id: 5,
+        produto: "smartphone",
+        preco: 2500.00,
+        quantidade: 4,
+        categoria: "eletronicos",
+        data: "2025-05-01"
+    },
+    {
+        id: 6,
+        produto: "mesa de escritório",
+        preco: 1200.00,
+        quantidade: 1,
+        categoria: "moveis",
+        data: "2025-04-29"
+    },
+    {
+        id: 7,
+        produto: "mouse sem fio",
+        preco: 200.00,
+        quantidade: 8,
+        categoria: "eletronicos",
+        data: "2025-05-03"
+    },
+    {
+        id: 8,
+        produto: "tênis esportivo",
+        preco: 350.00,
+        quantidade: 6,
+        categoria: "vestuario",
+        data: "2025-05-01"
+    },
+    {
+        id: 9,
+        produto: "tablet",
+        preco: 1800.00,
+        quantidade: 3,
+        categoria: "eletronicos",
+        data: "2025-05-02"
+    },
+    {
+        id: 10,
+        produto: "mochila impermeável",
+        preco: 250.00,
+        quantidade: 7,
+        categoria: "acessorios",
+        data: "2025-04-28"
+    }
+];
+
+function calculatValorTotal(bancoDeDados){
+    bancoDeDados.forEach( venda =>{
+        const valorTotal = venda.preco * venda.quantidade
+        console.log(`o valor total da venda de ${venda.produto} é de R$ ${valorTotal}`)
+    })
+}
+
+function vendasPorCategoria(bancoDeDados, categoria){
+    const vendasfiltradas = bancoDeDados.filter(venda => venda.categoria === categoria)
+    console.log(vendasfiltradas)
+}
+
+function valorTotalPorCategoria(bancoDeDados, categoria){
+    const vendasfiltradas = bancoDeDados.filter(venda => venda.categoria === categoria)
+    calculatValorTotal(vendasfiltradas)
+}
+
+function produtoMaisVendido(bancoDeDados){
+    let itemMaisVendido
+    for(const venda of bancoDeDados){
+        if (!itemMaisVendido){
+            itemMaisVendido = venda
+        }else if(venda.quantidade > itemMaisVendido.quantidade){
+            itemMaisVendido = venda
+        }
+    }
+    console.log(`O produto mais vendido é ${itemMaisVendido.produto} com ${itemMaisVendido.quantidade} itens vendidos`)
+}
 
 
-// const filtarCategoria = bancoDeDados.filter((categoria) =>{
+function agruparVendasPorMeses(bancoDeDados){
+    const mesesDisponiveis = []
+    bancoDeDados.forEach(venda => {
+        const mes =venda.data.split("-")[1]
+        if(mesesDisponiveis.find( elemento => elemento === mes)){
+            mesesDisponiveis.push(mes)
+        }
+    })
+    mesesDisponiveis.forEach( mes => {
+        for (const venda of bancoDeDados){
+            if (venda.data.split("-")[1] === mes){
+                
+            }
+        }
+    })
+}
 
-// }
-// )
 
-// function valorTotal(){
-//     escolhaVenda = prompt("Qual venda você deseja somar?")
-//     if(escolhaVenda == bancoDeDados){
-//         soma = preco * quantidade;
-//         console.log(soma)
-//     }
-// }
+
 
 
 // while(true){
@@ -392,6 +428,7 @@
 //     console.log(" 5- Agrupar vendas por mês")
 //     console.log(" 6- Ordenar vendas pot atributo(preço/quantidade/data)")
 //     console.log(" 7- Calcular a média de preços de todos os produtos")
+//     break;
 // }
 
 // escolha = parseInt(prompt("digite o número correspondente a sua escolha"))
@@ -400,5 +437,17 @@
 // {
 //     case 1:
 //         valorTotal();
+//         break;
+//     case 2:
+//         break;
+//     case 3:
+//         break;
+//     case 4:
+//         break;
+//     case 5:
+//         break;
+//     case 6:
+//         break;
+//     case 7:
 //         break;
 // }
