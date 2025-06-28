@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultor de clima</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 class="titlepage" id="titlepage">Consultor de Clima</h1>
+    <p class="descriptionpage" id="descriptionpage">Descubra o clima da sua localização através do CEP</p>
+
+    <div class="containerBusca" id="containerBusca">
+        <form class="formCep" id="formCep"> 
+            <input type="text" class="buscarCep" id="buscarCep" placeholder="Digite o CEP">
+        </form>
+        <button type="submit" class="bntBuscarCep" id="bntBuscarCep">Buscar</button>
+    </div>
+
+    <div class="containerInfoCep" id="containerInfoCep">
+        <h2 class="infoCepTitle" id="infoCepTitle">localização</h2>
+        <div class="infosLocalizacao" id="infosLocalizacao">
+            <div>
+                <h3 class="cepLocalizacao" id="cepLocalizacao">CEP: </h3>
+                <span id="valorcep"></span>
+            </div>
+
+            <div>
+                 <h3 class="lagradouroLocalizacao" id="lagradouroLocalizacao">Logradouro: </h3>
+                 <span id="valorlogradouro"></span>
+            </div>
+
+            <div>
+                <h3 class="bairroLocalizacao" id="bairroLocalizacao">Bairro: </h3>
+                <span id="valorbairro"></span>
+            </div>
+            
+            <div>
+                <h3 class="cidadeLocalizacao" id="cidadeLocalizacao">Cidade: </h3>
+                <span id="valorcidade"></span>
+            </div>
+            <div>
+             <h3 class="estadoLocalizacao" id="estadoLocalizacao">Estado: </h3>
+             <span id="valorestado"></span>
+            </div>
+           
+            
+        </div>
+        <button type="submit">Adicionar como favorito</button>
+    </div>
+
+    
+    <script src="scripts.js"></script>
+</body>
+</html>
